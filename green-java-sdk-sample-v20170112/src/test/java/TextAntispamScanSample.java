@@ -21,20 +21,20 @@ import com.aliyuncs.profile.IClientProfile;
 
 /**
  * Created by hyliu on 16/3/2.
- * 文本检测
+ * 鏂囨湰妫�娴�
  */
 public class TextAntispamScanSample extends BaseSample {
 
     public static void main(String[] args) throws Exception {
-        //请替换成你自己的accessKeyId、accessKeySecret
+        //璇锋浛鎹㈡垚浣犺嚜宸辩殑accessKeyId銆乤ccessKeySecret
         IClientProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);
         DefaultProfile.addEndpoint(getEndPointName(), regionId, "Green", getDomain());
 
         IAcsClient client = new DefaultAcsClient(profile);
 
         TextScanRequest textScanRequest = new TextScanRequest();
-        textScanRequest.setAcceptFormat(FormatType.JSON); // 指定api返回格式
-        textScanRequest.setMethod(com.aliyuncs.http.MethodType.POST); // 指定请求方法
+        textScanRequest.setAcceptFormat(FormatType.JSON); // 鎸囧畾api杩斿洖鏍煎紡
+        textScanRequest.setMethod(com.aliyuncs.http.MethodType.POST); // 鎸囧畾璇锋眰鏂规硶
         textScanRequest.setEncoding("UTF-8");
         textScanRequest.setRegionId(regionId);
 
@@ -42,19 +42,20 @@ public class TextAntispamScanSample extends BaseSample {
         List<Map<String, Object>> tasks = new ArrayList<Map<String, Object>>();
         Map<String, Object> task1 = new LinkedHashMap<String, Object>();
         task1.put("dataId", UUID.randomUUID().toString());
-        task1.put("content", "本校小额贷款，安全、快捷、方便、无抵押，随机随贷，当天放款，上门服务。联系q 946932");
+        task1.put("content", "[嚎哭][可怜][呲牙][鬼脸][惊恐][可怜][呲牙][惊讶][流感][害羞][鬼脸][惊讶][惊恐][惊恐][嚎哭][流泪][流泪][可怜][可怜][嚎哭][嚎哭][呲牙][呲牙][鬼脸][鬼脸][惊讶][惊讶][怒][惊恐][惊恐][嚎哭][可怜][可怜][嚎哭][流泪][流泪][流泪][可怜][敲][敲][敲][惊恐][惊恐][惊恐][敲][敲][呲牙][惊讶][惊讶][怒][怒][惊恐][惊恐][可怜][可怜][可怜][调皮][调皮][流泪][流泪][可怜][可怜][可怜][可怜][汗]");
 
         tasks.add(task1);
+        
 
        /* Map<String, Object> task2 = new LinkedHashMap<String, Object>();
         task2.put("dataId", UUID.randomUUID().toString());
-        task2.put("content", "蒙汗药法轮功");
+        task2.put("content", "钂欐睏鑽硶杞姛");
 
         tasks.add(task2);
 
         Map<String, Object> task3 = new LinkedHashMap<String, Object>();
         task3.put("dataId", UUID.randomUUID().toString());
-        task3.put("content", "正常人");
+        task3.put("content", "姝ｅ父浜�");
 
         tasks.add(task3);*/
         JSONObject data = new JSONObject();
@@ -64,7 +65,7 @@ public class TextAntispamScanSample extends BaseSample {
         textScanRequest.setHttpContent(data.toJSONString().getBytes("UTF-8"), "UTF-8", FormatType.JSON);
 
         /**
-         * 请务必设置超时时间
+         * 璇峰姟蹇呰缃秴鏃舵椂闂�
          */
         textScanRequest.setConnectTimeout(3000);
         textScanRequest.setReadTimeout(6000);
@@ -82,7 +83,7 @@ public class TextAntispamScanSample extends BaseSample {
                             for (Object sceneResult : sceneResults) {
                                 String scene = ((JSONObject)sceneResult).getString("scene");
                                 String suggestion = ((JSONObject)sceneResult).getString("suggestion");
-                                //根据scene和suggetion做相关的处理
+                                //鏍规嵁scene鍜宻uggetion鍋氱浉鍏崇殑澶勭悊
                                 //do something
                                 System.out.println("args = [" + scene + "]");
                                 System.out.println("args = [" + suggestion + "]");

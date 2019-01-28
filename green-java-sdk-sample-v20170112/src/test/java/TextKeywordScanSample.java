@@ -21,20 +21,20 @@ import com.aliyuncs.profile.IClientProfile;
 
 /**
  * Created by hyliu on 16/3/2.
- * 文本检测
+ * 鏂囨湰妫�娴�
  */
 public class TextKeywordScanSample extends BaseSample {
 
     public static void main(String[] args) throws Exception {
-        //请替换成你自己的accessKeyId、accessKeySecret
+        //璇锋浛鎹㈡垚浣犺嚜宸辩殑accessKeyId銆乤ccessKeySecret
         IClientProfile profile = DefaultProfile.getProfile(regionId, accessKeyId, accessKeySecret);
         DefaultProfile.addEndpoint(getEndPointName(), regionId, "Green", getDomain());
 
         IAcsClient client = new DefaultAcsClient(profile);
 
         TextScanRequest textScanRequest = new TextScanRequest();
-        textScanRequest.setAcceptFormat(FormatType.JSON); // 指定api返回格式
-        textScanRequest.setMethod(com.aliyuncs.http.MethodType.POST); // 指定请求方法
+        textScanRequest.setAcceptFormat(FormatType.JSON); // 鎸囧畾api杩斿洖鏍煎紡
+        textScanRequest.setMethod(com.aliyuncs.http.MethodType.POST); // 鎸囧畾璇锋眰鏂规硶
         textScanRequest.setEncoding("UTF-8");
         textScanRequest.setRegionId(regionId);
 
@@ -44,7 +44,7 @@ public class TextKeywordScanSample extends BaseSample {
 
         Map<String, Object> task1 = new LinkedHashMap<String, Object>();
         task1.put("dataId", UUID.randomUUID().toString());
-        task1.put("content", "蒙汗药法轮功");
+        task1.put("content", "公公的鸡");
 
         tasks.add(task1);
 
@@ -55,7 +55,7 @@ public class TextKeywordScanSample extends BaseSample {
         textScanRequest.setHttpContent(data.toJSONString().getBytes("UTF-8"), "UTF-8", FormatType.JSON);
 
         /**
-         * 请务必设置超时时间
+         * 璇峰姟蹇呰缃秴鏃舵椂闂�
          */
         textScanRequest.setConnectTimeout(3000);
         textScanRequest.setReadTimeout(6000);
@@ -73,7 +73,7 @@ public class TextKeywordScanSample extends BaseSample {
                             for (Object sceneResult : sceneResults) {
                                 String scene = ((JSONObject)sceneResult).getString("scene");
                                 String suggestion = ((JSONObject)sceneResult).getString("suggestion");
-                                //根据scene和suggetion做相关的处理
+                                //鏍规嵁scene鍜宻uggetion鍋氱浉鍏崇殑澶勭悊
                                 //do something
                                 System.out.println("args = [" + scene + "]");
                                 System.out.println("args = [" + suggestion + "]");

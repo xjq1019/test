@@ -1,5 +1,6 @@
 eclipse.preferences.version=1
 encoding//src/test/java/ImageAsyncScanRequestSample.java=UTF-8
+encoding//src/test/java/TextAntispamScanSample.java=UTF-8
+encoding//src/test/java/TextKeywordScanSample.java=UTF-8
 encoding//src/test/java/VoiceFileAsyncScanSample.java=UTF-8
 encoding//src/test/java/VoiceStreamAsyncScanSample.java=UTF-8
-encoding/<project>=UTF-8

@@ -39,7 +39,7 @@ public class VoiceFileAsyncScanSample extends BaseSample {
 
         List<Map<String, Object>> tasks = new ArrayList<Map<String, Object>>();
         //FIXME  修改这里的语音文件地址
-        tasks.add(buildTask("http://xxxxx.com/xxx.mp3"));
+        tasks.add(buildTask("http://youxi-assets.oss-cn-shanghai.aliyuncs.com/youxi/audio/8308dfc6-0e63-4299-abf4-8d232dbe602d.MP3"));
         JSONObject data = new JSONObject();
 
         System.out.println("==========Task count:" + tasks.size());
@@ -56,7 +56,6 @@ public class VoiceFileAsyncScanSample extends BaseSample {
 
             if (httpResponse.isSuccess()) {
                 JSONObject scrResponse = JSON.parseObject(new String(httpResponse.getHttpContent(), "UTF-8"));
-                System.out.println(JSON.toJSONString(scrResponse, true));
                 if (200 == scrResponse.getInteger("code")) {
                     JSONArray taskResults = scrResponse.getJSONArray("data");
                     for (Object taskResult : taskResults) {
@@ -101,8 +100,8 @@ public class VoiceFileAsyncScanSample extends BaseSample {
         int failCount = 0;
         boolean stop = false;
         do {
-            // 30秒查询一次
-            Thread.sleep(30 * 1000);
+            // 5秒查询一次
+            Thread.sleep(5 * 1000);
             JSONObject scanResult = getScanResult(client, taskId);
             if (scanResult == null || 200 != scanResult.getInteger("code")) {
                 failCount++;

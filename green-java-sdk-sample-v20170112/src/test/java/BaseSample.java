@@ -12,7 +12,7 @@ public class BaseSample {
     protected static String regionId = "cn-shanghai";
 
     static {
-        Properties properties = new Properties();
+/*        Properties properties = new Properties();
 
         try {
             properties.load(BaseSample.class.getResourceAsStream("config.properties"));
@@ -21,7 +21,7 @@ public class BaseSample {
             regionId = properties.getProperty("regionId");
         } catch(IOException e) {
             e.printStackTrace();
-        }
+        }*/
 
     }
 

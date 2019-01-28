@@ -49,6 +49,13 @@ public class ImageSyncScanRequestSample extends BaseSample {
         task.put("time", new Date());
 
         tasks.add(task);
+        
+        Map<String, Object> task1 = new LinkedHashMap<String, Object>();
+        task1.put("dataId", UUID.randomUUID().toString());
+        task1.put("url", "http://img.8kmm.com/2014/4/201404020901045061.jpg");
+        task1.put("time", new Date());
+
+        tasks.add(task1);
         JSONObject data = new JSONObject();
         /**
          * porn: 色情
@@ -57,7 +64,7 @@ public class ImageSyncScanRequestSample extends BaseSample {
          * ad: 图片广告
          * ocr: 文字识别
          */
-        data.put("scenes", Arrays.asList("porn","terrorism"));
+        data.put("scenes", Arrays.asList("porn","terrorism","qrcode","ad"));
         data.put("tasks", tasks);
 
         imageSyncScanRequest.setHttpContent(data.toJSONString().getBytes("UTF-8"), "UTF-8", FormatType.JSON);
